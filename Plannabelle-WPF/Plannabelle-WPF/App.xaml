@@ -1,0 +1,73 @@
+﻿<Application x:Class="Plannabelle_WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Plannabelle_WPF"
+             StartupUri="Views/LoginWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="winDefault" TargetType="Window">
+            <Setter Property="Background" Value="#001514" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style x:Key="grdDefault" TargetType="Grid">
+            <Setter Property="Background" Value="#04724D" />
+            <Setter Property="Margin" Value="16" />
+        </Style>
+
+        <Style x:Key="stcDefault" TargetType="StackPanel">
+            <Setter Property ="Background" Value="#56876D" />
+            <Setter Property="Margin" Value="16" />
+        </Style>
+
+        <Style x:Key="menDefault" TargetType="Menu">
+            <Setter Property="Background" Value="#04724D" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style x:Key="lblOnDefault" TargetType="Label">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style x:Key="btnPrimaryColor" TargetType="Button">
+            <Setter Property="Background" Value="#E6AF2E" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="8 0" />
+        </Style>
+
+        <Style x:Key="btnSecondaryColor" TargetType="Button">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="8 0" />
+        </Style>
+
+        <Style x:Key="btnDangerColor" TargetType="Button">
+            <Setter Property="Background" Value="#FB3640" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="8 0" />
+        </Style>
+
+        <Style x:Key="btnAngleNav" TargetType="Button">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.1" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="lstDefault" TargetType="ListBox">
+            <Setter Property ="Background" Value="#56876D" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="16" />
+            <Setter Property="BorderBrush" Value="#00ABADB3" />
+        </Style>
+    </Application.Resources>
+</Application>

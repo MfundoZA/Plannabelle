@@ -1,0 +1,49 @@
+﻿<Window x:Class="Plannabelle_WPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Name="winMain" Title="Main Window" Height="450" Width="800" Loaded="winMain_Loaded" Style="{StaticResource winDefault}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="25" MaxHeight="25"/>
+            <RowDefinition />
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        
+        <Menu x:Name="mnuMenu" Grid.Row="0" MinHeight="25" MaxHeight="25" Style="{StaticResource menDefault}">
+            <MenuItem Header="New Semester" Click="mniNewSemesterOnClick" MinHeight="25" MaxHeight="25"></MenuItem>
+            <MenuItem Header="New Module" Click="mniNewModuleOnClick" MinHeight="25" MaxHeight="25"></MenuItem>
+            <MenuItem Header="Show All Semesters" Click="mniShowAllSemestersOnClick" MinHeight="25" MaxHeight="25"></MenuItem>
+            <MenuItem Header="Add Self Study Hours" MinHeight="25" MaxHeight="25" Click="mniAddSelfHoursOnClick"></MenuItem>
+            <MenuItem Header="Settings" MinHeight="25" MaxHeight="25" Click="mniSettingsOnClick"></MenuItem>
+        </Menu>
+
+        <Grid x:Name="grdContent" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnLeftAngleNav" Grid.Column="0" Content="&lt;" Style="{StaticResource btnAngleNav}" HorizontalAlignment="Left" Margin="16 0" Click="btnLeftAngleNav_Click" IsEnabled="False" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Content="{Binding CurrentSemester.StartDate}" FontSize="16" Style="{StaticResource lblOnDefault}" />
+                <Label Content="-" FontSize="16" Style="{StaticResource lblOnDefault}" />
+                <Label Content="{Binding CurrentSemester.EndDate}" FontSize="16" Style="{StaticResource lblOnDefault}"/>
+            </StackPanel>
+            <Button x:Name="btnRignAngleNav" Grid.Column="2" Content="&gt;" Style="{StaticResource btnAngleNav}"  HorizontalAlignment="Right" Margin="16 0" Click="btnRignAngleNav_Click" />
+        </Grid>
+
+        <ListBox x:Name="lstModules" Grid.Row="2" ItemsSource="{Binding Modules}" Style="{StaticResource lstDefault}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- Todo Create ListBox item template -->
+                    <Label Content="{Binding Name}" Style="{StaticResource lblOnDefault}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
