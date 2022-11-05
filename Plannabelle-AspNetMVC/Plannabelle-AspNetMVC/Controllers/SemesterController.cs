@@ -1,30 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PlannabelleClassLibrary.ViewModels;
 
 namespace Plannabelle_AspNetMVC.Controllers
 {
-    public class MainController : Controller
+    public class SemesterController : Controller
     {
-        // GET: MainController
+        // GET: SemesterController
         public ActionResult Index()
         {
-            return View(new BaseViewModel());
+            return View();
         }
 
-        // GET: MainController/Details/5
+        // GET: SemesterController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: MainController/Create
+        // GET: SemesterController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MainController/Create
+        // POST: SemesterController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -39,13 +38,13 @@ namespace Plannabelle_AspNetMVC.Controllers
             }
         }
 
-        // GET: MainController/Edit/5
+        // GET: SemesterController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: MainController/Edit/5
+        // POST: SemesterController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -60,13 +59,13 @@ namespace Plannabelle_AspNetMVC.Controllers
             }
         }
 
-        // GET: MainController/Delete/5
+        // GET: SemesterController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: MainController/Delete/5
+        // POST: SemesterController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
