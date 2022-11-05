@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PlannabelleClassLibrary.Data;
 
 namespace Plannabelle_AspNetMVC.Data
 {
