@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plannabelle-AspNetMVC", "Plannabelle-AspNetMVC\Plannabelle-AspNetMVC.csproj", "{06F60DA5-FC80-4D26-ADF2-D814FBB582C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plannabelle-AspNetMVC", "Plannabelle-AspNetMVC\Plannabelle-AspNetMVC.csproj", "{06F60DA5-FC80-4D26-ADF2-D814FBB582C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannabelleClassLibrary", "..\Plannabelle\PlannabelleClassLibrary\PlannabelleClassLibrary\PlannabelleClassLibrary.csproj", "{6187C1B4-375E-4D59-9ABA-EB888A97119C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannabelleClassLibrary", "..\PlannabelleClassLibrary\PlannabelleClassLibrary\PlannabelleClassLibrary.csproj", "{06658B79-9961-46B4-8181-624D06F689A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{06F60DA5-FC80-4D26-ADF2-D814FBB582C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06F60DA5-FC80-4D26-ADF2-D814FBB582C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06F60DA5-FC80-4D26-ADF2-D814FBB582C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6187C1B4-375E-4D59-9ABA-EB888A97119C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6187C1B4-375E-4D59-9ABA-EB888A97119C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6187C1B4-375E-4D59-9ABA-EB888A97119C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6187C1B4-375E-4D59-9ABA-EB888A97119C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06658B79-9961-46B4-8181-624D06F689A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06658B79-9961-46B4-8181-624D06F689A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06658B79-9961-46B4-8181-624D06F689A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06658B79-9961-46B4-8181-624D06F689A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
