@@ -11,10 +11,10 @@ namespace PlannabelleClassLibrary.ViewModels
      */
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public static ObservableCollection<Semester> semesters { get; set; }
-        public static Semester currentSemester;
-        public static User User { get; set; }
-        public static int currentSemesterIndex { get; set; }
+        public ObservableCollection<Semester> semesters { get; set; }
+        public Semester currentSemester;
+        public User User { get; set; }
+        public int currentSemesterIndex { get; set; }
 
         public Semester CurrentSemester
         {

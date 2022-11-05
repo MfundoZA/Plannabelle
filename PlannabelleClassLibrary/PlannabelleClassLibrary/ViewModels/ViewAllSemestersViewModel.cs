@@ -21,7 +21,7 @@ namespace PlannabelleClassLibrary.ViewModels
 
         public void SemesterSelected(int semesterIndex)
         {
-            BaseViewModel.currentSemesterIndex = semesterIndex;
+             currentSemesterIndex = semesterIndex;
             base.CurrentSemester = semesters[semesterIndex];
         }
     }
