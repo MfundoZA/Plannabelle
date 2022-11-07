@@ -16,7 +16,7 @@ namespace PlannabelleClassLibrary.ViewModels
         public ViewAllSemestersViewModel() : base()
         {
             EnrollmentDataService = new EnrollmentDataService(PlannabelleContextDbFactory.GetDbContext());
-            //semesters = new ObservableCollection<Semester>(EnrollmentDataService.getUserSemesters(User.Id));
+            semesters = new ObservableCollection<Semester>(EnrollmentDataService.getUserSemesters(/*User.Id*/ 1));
         }
 
         public void SemesterSelected(int semesterIndex)
