@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PlannabelleClassLibrary.ViewModels;
 
 namespace Plannabelle_AspNetMVC.Controllers
 {
     public class SemesterController : Controller
     {
+        public ViewAllSemestersViewModel ViewAllSemestersViewModel { get; set; }
+
         // GET: SemesterController
         public ActionResult Index()
         {
