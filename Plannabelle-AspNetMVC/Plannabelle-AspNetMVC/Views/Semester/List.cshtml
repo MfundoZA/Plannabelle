@@ -9,7 +9,19 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+
+@foreach (var item in Model) {
+    <div class="card w-80">
+        <div class="card-body">
+            <h5 class="card-title">Semester</h5>
+            <p class="card-text">@item.StartDate</p>
+            <p class="card-text">@item.EndDate</p>
+            <a href="#" class="btn btn-primary">Button</a>
+        </div>
+    </div>
+}
+
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -38,4 +50,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@

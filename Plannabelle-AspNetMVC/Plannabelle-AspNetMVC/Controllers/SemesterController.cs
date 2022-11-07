@@ -9,9 +9,13 @@ namespace Plannabelle_AspNetMVC.Controllers
         public ViewAllSemestersViewModel ViewAllSemestersViewModel { get; set; }
 
         // GET: SemesterController
-        public ActionResult Index()
+        public ActionResult List()
         {
-            return View();
+            ViewAllSemestersViewModel = new ViewAllSemestersViewModel();
+
+            var semesters = ViewAllSemestersViewModel.semesters;
+
+            return View(semesters);
         }
 
         // GET: SemesterController/Details/5
