@@ -9,7 +9,7 @@ In order to contribute or run plannabelle you will need the following:
 - Have the WPF SDK installed using Visual Studio Installer
 
 # How build and run
-1) Clone this repo on to your local machine.
+1) Clone [this](https://github.com/MfundoZA/Plannabelle) repo on to your local machine.
 2) Open the Plannabelle folder on Visual Studio
 3) Select the "Plannabelle-WPF" solution and click "Run Plannabelle-WPF"
 
