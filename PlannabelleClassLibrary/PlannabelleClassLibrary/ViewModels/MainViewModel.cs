@@ -14,7 +14,6 @@ namespace PlannabelleClassLibrary.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public PlannabelleDbContext dbContext { get; set; }
         public EnrollmentDataService enrollmentDataService { get; set; }
 
         private ObservableCollection<Module> modules;
