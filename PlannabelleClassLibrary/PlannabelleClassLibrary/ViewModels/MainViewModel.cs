@@ -38,7 +38,7 @@ namespace PlannabelleClassLibrary.ViewModels
             enrollmentDataService = new EnrollmentDataService(dbContext);
             semesters = new ObservableCollection<Semester>(enrollmentDataService.getUserSemesters(User.Id));
 
-            if (semesters != null)
+            if (semesters.Count > 0)
             {
                 CurrentSemester = semesters.First();
                 currentSemesterIndex = 0;
