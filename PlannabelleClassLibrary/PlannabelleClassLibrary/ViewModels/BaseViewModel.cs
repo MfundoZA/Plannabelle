@@ -1,4 +1,5 @@
-﻿using PlannabelleClassLibrary.Models;
+﻿using PlannabelleClassLibrary.Data;
+using PlannabelleClassLibrary.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -11,10 +12,12 @@ namespace PlannabelleClassLibrary.ViewModels
      */
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Semester> semesters { get; set; }
-        public Semester currentSemester;
-        public User User { get; set; }
-        public int currentSemesterIndex { get; set; }
+        public static ObservableCollection<Semester> semesters { get; set; }
+        public static Semester currentSemester;
+        public static User User { get; set; }
+        public static int currentSemesterIndex { get; set; }
+        public static PlannabelleDbContext dbContext { get; set; }
+
 
         public Semester CurrentSemester
         {
