@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PlannabelleClassLibrary.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
         public UserDataService UserDataService { get; set; }
 
