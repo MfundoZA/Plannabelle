@@ -1,6 +1,6 @@
-# Plannabelle
+# Plannabelle (Desktop)
 
-A study time management desktop app for students made with WPF/C# and SQL.
+The desktop platform of Plannabelle
 
 # Requirements
 In order to contribute or run plannabelle you will need the following:
@@ -9,7 +9,9 @@ In order to contribute or run plannabelle you will need the following:
 - Have the WPF SDK installed using Visual Studio Installer
 
 # How build and run
-Clone this repo on to your local machine. Open the solution on Visual Studio select the "Plannabelle-WPF" project and click "Run Plannabelle-WPF"
+1) Clone this repo on to your local machine.
+2) Open the Plannabelle folder on Visual Studio
+3) Select the "Plannabelle-WPF" solution and click "Run Plannabelle-WPF"
 
 # Change log
 * Implemented databinding to allow UI updates to occur when data values change
