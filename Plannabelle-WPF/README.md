@@ -3,7 +3,7 @@
 The desktop platform of Plannabelle made with WPF/C# and Azure SQL
 
 # Some features
-# Add save your modules to a database
+# Save your modules to a database
 ![Creating a module](../Images/WPF/NewModuleWindow.png)
 
 # View all your modules in a central dashboard
