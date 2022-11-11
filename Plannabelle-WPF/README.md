@@ -1,6 +1,6 @@
 # Plannabelle (Desktop)
 
-The desktop platform of Plannabelle
+The desktop platform of Plannabelle made with WPF/C# and Azure SQL
 
 # Requirements
 In order to contribute or run plannabelle you will need the following:
