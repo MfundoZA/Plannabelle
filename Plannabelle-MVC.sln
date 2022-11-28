@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plannabelle-MVC", "Plannabelle-MVC\Plannabelle-MVC.csproj", "{D10F5427-265E-412B-A48D-9B9112FC2672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plannabelle-MVC", "Plannabelle-MVC\Plannabelle-MVC.csproj", "{D10F5427-265E-412B-A48D-9B9112FC2672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlannabelleClassLibrary", "PlannabelleClassLibrary\PlannabelleClassLibrary.csproj", "{B95C6504-4124-4FD4-B90A-DB33BB981297}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannabelleClassLibrary", "PlannabelleClassLibrary\PlannabelleClassLibrary.csproj", "{B95C6504-4124-4FD4-B90A-DB33BB981297}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plannabelle-WPF", "Plannabelle-WPF\Plannabelle-WPF.csproj", "{54DAB449-4167-4577-8996-D9C25A3C745F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B95C6504-4124-4FD4-B90A-DB33BB981297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B95C6504-4124-4FD4-B90A-DB33BB981297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B95C6504-4124-4FD4-B90A-DB33BB981297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54DAB449-4167-4577-8996-D9C25A3C745F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DAB449-4167-4577-8996-D9C25A3C745F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DAB449-4167-4577-8996-D9C25A3C745F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DAB449-4167-4577-8996-D9C25A3C745F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
