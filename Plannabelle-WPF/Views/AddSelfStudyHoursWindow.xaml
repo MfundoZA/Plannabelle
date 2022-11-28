@@ -1,0 +1,25 @@
+﻿<Window x:Class="Plannabelle_WPF.Views.AddSelfStudyHoursWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Plannabelle_WPF.Views"
+        mc:Ignorable="d"
+        Title="AddSelfStudyHoursWindow" Height="450" Width="800" Style="{StaticResource winDefault}">
+    <StackPanel Style="{StaticResource stcDefault}">
+        <StackPanel>
+            <Label Content="Select the module you's like to update:" Margin="8, 8, 8, 4" Style="{StaticResource lblOnDefault}" />
+            <ComboBox x:Name="cmbModules" ItemsSource="{Binding moduleDictionary}" DisplayMemberPath="Value" SelectedValuePath="Key" Margin="8, 4, 8, 4" />
+        </StackPanel>
+
+        <StackPanel>
+            <Label Content="How many hours did you study for: " Margin="8, 8, 8, 4" Style="{StaticResource lblOnDefault}" />
+            <TextBox x:Name="txtHoursStudied" Margin="8, 4, 8, 4" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnCancel" Width="80" Content="Cancel" Style="{StaticResource btnSecondaryColor}"/>
+            <Button x:Name="btnAddStudyHours" Content="Add study hours" Style="{StaticResource btnPrimaryColor}" Click="btnAddStudyHours_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
