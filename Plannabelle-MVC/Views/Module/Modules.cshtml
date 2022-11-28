@@ -1,0 +1,66 @@
+﻿@model PlannabelleClassLibrary.ViewModels.ModuleViewModel
+
+@{
+    ViewData["Title"] = "Modules";
+}
+
+<h1>Modules</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassHoursPerWeek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelfStudyHoursPerWeek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelfStudyHoursRemainingForWeek)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserModules)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Module.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Module.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Module.Credits)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => item.ClassHoursPerWeek)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.SelfStudyHoursPerWeek)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.SelfStudyHoursRemainingForWeek)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

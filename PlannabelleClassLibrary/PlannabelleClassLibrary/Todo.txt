@@ -1,2 +1,0 @@
-﻿* Think about implementing a course model that can be used to autocomplete modules
-* 

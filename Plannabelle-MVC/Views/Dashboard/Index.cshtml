@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PlannabelleClassLibrary.Models.UserSemester>
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+        @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Plannabelle_MVC</a>*@
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Semester" asp-action="Create">New Semester</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Module" asp-action="Create">New Module</a>
+                </li>
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav
+
+
+<h1>Semesters</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester.EndDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Semester.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
