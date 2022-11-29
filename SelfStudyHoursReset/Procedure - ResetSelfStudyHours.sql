@@ -1,0 +1,5 @@
+CREATE PROCEDURE ResetSelfStudyHours
+AS
+UPDATE UserModules
+SET UserModules.SelfStudyHoursRemainingForWeek = B.SelfStudyHoursPerWeek
+FROM UserModules B
