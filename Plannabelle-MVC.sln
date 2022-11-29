@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannabelleClassLibrary", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plannabelle-WPF", "Plannabelle-WPF\Plannabelle-WPF.csproj", "{54DAB449-4167-4577-8996-D9C25A3C745F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfStudyHoursReset", "SelfStudyHoursReset\SelfStudyHoursReset.csproj", "{63155D26-6615-4C4F-B713-ED9BFB3F7B25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{54DAB449-4167-4577-8996-D9C25A3C745F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54DAB449-4167-4577-8996-D9C25A3C745F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54DAB449-4167-4577-8996-D9C25A3C745F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63155D26-6615-4C4F-B713-ED9BFB3F7B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63155D26-6615-4C4F-B713-ED9BFB3F7B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63155D26-6615-4C4F-B713-ED9BFB3F7B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63155D26-6615-4C4F-B713-ED9BFB3F7B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
