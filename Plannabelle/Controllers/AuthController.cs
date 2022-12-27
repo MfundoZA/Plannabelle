@@ -35,7 +35,7 @@ namespace Plannabelle.Controllers
                 var username = collection["username"].ToString();
                 var email = collection["email"].ToString();
                 var password = collection["password"].ToString();
-                var confirmationPassword = collection["confimationPassword"].ToString();
+                var confirmationPassword = collection["confirmationPassword"].ToString();
 
                if (String.Equals(password, confirmationPassword))
                {
