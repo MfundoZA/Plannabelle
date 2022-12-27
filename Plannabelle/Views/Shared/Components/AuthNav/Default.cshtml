@@ -4,7 +4,7 @@
 @model List<object>
 
 <ul class="navbar-nav">
-    @if (Int32.Parse(Model[0].ToString()) != 0)
+    @if (Model[1].ToString() != "")
     {
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @Model[1].ToString()!</a>
