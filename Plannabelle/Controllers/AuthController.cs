@@ -74,7 +74,7 @@ namespace Plannabelle.Controllers
                 var email = collection["email"].ToString();
                 var password = collection["password"].ToString();
 
-                if (DbContext.Students.Where<Student>(x => String.Equals(x.Email, email) && String.Equals(x.Password , password)).Any())
+                if (DbContext.Students.Where<Student>(x => String.Equals(x.Email, email) && String.Equals(x.Password, password)).Any())
                 {
                     var student = DbContext.Students.Where<Student>(x => String.Equals(x.Email, email) && String.Equals(x.Password, password)).First();
 
