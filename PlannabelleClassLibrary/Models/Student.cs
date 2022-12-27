@@ -12,5 +12,17 @@ namespace PlannabelleClassLibrary.Models
         public string? Username { get; set; }
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
+
+        public Student()
+        {
+
+        }
+
+        public Student(string? username, string email, string password)
+        {
+            Username = username;
+            Email = email;
+            Password = password;
+        }
     }
 }
