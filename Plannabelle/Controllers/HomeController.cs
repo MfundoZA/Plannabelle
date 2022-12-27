@@ -14,8 +14,14 @@ namespace Plannabelle.Controllers
         {
             _logger = logger;
 
-            httpContextAccessor.HttpContext?.Session.SetInt32("studentId", 0);
-            httpContextAccessor.HttpContext?.Session.SetString("email", "");
+            byte[]? output;
+
+            if (httpContextAccessor.HttpContext?.Session.TryGetValue("studentId", out output) == false)
+            {
+                httpContextAccessor.HttpContext?.Session.SetInt32("studentId", 0);
+                httpContextAccessor.HttpContext?.Session.SetString("email", "");
+            }
+            
         }
 
         public IActionResult Index()
