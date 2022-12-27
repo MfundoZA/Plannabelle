@@ -95,6 +95,18 @@ namespace Plannabelle.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        // POST: AuthController/LogOut
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOut()
+        {
+            HttpContextAccessor.HttpContext?.Session.SetInt32("userId", 0);
+            HttpContextAccessor.HttpContext?.Session.SetString("email", "");
+
+            return RedirectToAction("Index", "Home");
+        }
+
         static string HashString(string text, string salt = "nf8n43nsd9s")
         {
             if (String.IsNullOrEmpty(text))
