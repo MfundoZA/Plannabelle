@@ -11,12 +11,13 @@ namespace Plannabelle.Controllers
     public class AuthController : Controller
     {
         public AuthViewModel AuthViewModel { get; set; } = new AuthViewModel();
-        public PlannabelleDbContext DbContext { get; set; } = new PlannabelleDbContext();
+        public PlannabelleDbContext DbContext { get; set; }
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
-        public AuthController(IHttpContextAccessor httpContextAccessor)
+        public AuthController(IHttpContextAccessor httpContextAccessor, PlannabelleDbContext dbContext)
         {
             HttpContextAccessor = httpContextAccessor;
+            DbContext = dbContext;
         }
 
         // GET: AuthController/Register
