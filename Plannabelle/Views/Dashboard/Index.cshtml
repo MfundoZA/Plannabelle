@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PlannabelleClassLibrary.Models.Enrollment>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Module)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelfStudyHoursPerWeek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelfStudyHoursRemaining)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Module.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SelfStudyHoursPerWeek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SelfStudyHoursRemaining)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
