@@ -39,14 +39,14 @@ namespace Plannabelle.Controllers
                 var password = collection["password"].ToString();
                 var confirmationPassword = collection["confirmationPassword"].ToString();
 
-               if (String.Equals(password, confirmationPassword))
-               {
+                if (String.Equals(password, confirmationPassword))
+                {
                     password = HashString(password);
                     var newStudent = new Student(username, email, password);
 
                     DbContext.Add<Student>(newStudent);
                     DbContext.SaveChanges();
-               }
+                }
 
                 return RedirectToAction(nameof(Login));
             }
@@ -86,7 +86,7 @@ namespace Plannabelle.Controllers
                     ViewBag.Message = "Incorrect email or password please try again";
                 }
 
-                
+
             }
             catch
             {
