@@ -1,20 +1,30 @@
-﻿@model IEnumerable<PlannabelleClassLibrary.Models.Enrollment>
+﻿@using PlannabelleClassLibrary.Models
+@model DoublyLinkedList<Semester>
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Dashboard";
 }
 
-<h1>View</h1>
+<h1>Dashboard</h1>
+
+<!-- Nav bar-->
+<div></div>
+
+<!-- Semester Navigation-->
+<div class="d-sm-inline-flex justify-content-between">
+    <button asp-action="NavigateToPreviousSemester"><</button>
+    <p>[Semester Duration]</p>
+    <button asp-action="NavigateToPreviousSemester">></button>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@* Use to display modules corresponing with their semester
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Student)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Semester)
             </th>
@@ -56,4 +66,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
