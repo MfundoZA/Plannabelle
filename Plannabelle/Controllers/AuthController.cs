@@ -72,7 +72,7 @@ namespace Plannabelle.Controllers
             try
             {
                 var email = collection["email"].ToString();
-                var password = collection["password"].ToString();
+                var password = HashString(collection["password"].ToString());
 
                 if (DbContext.Students.Where<Student>(x => String.Equals(x.Email, email) && String.Equals(x.Password, password)).Any())
                 {
@@ -84,16 +84,15 @@ namespace Plannabelle.Controllers
                 else
                 {
                     ViewBag.Message = "Incorrect email or password please try again";
+                    return View();
                 }
-
-
             }
             catch
             {
-                return View();
+                
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
 
         // POST: AuthController/LogOut
