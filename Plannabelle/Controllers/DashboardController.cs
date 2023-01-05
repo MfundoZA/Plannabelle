@@ -11,6 +11,7 @@ namespace Plannabelle.Controllers
         public DashboardViewModel DashboardViewModel { get; set; } = new DashboardViewModel();
         public PlannabelleDbContext DbContext { get; set; }
         public IHttpContextAccessor HttpContextAccessor { get; set; }
+        public Node<Semester> CurrentlyVisibleSemester { get; set; }
 
         public DashboardController(IHttpContextAccessor httpContextAccessor, PlannabelleDbContext dbContext)
         {
@@ -26,6 +27,17 @@ namespace Plannabelle.Controllers
             foreach (var semester in semesters)
             {
                 DashboardViewModel.Semesters?.addNode(semester);
+            }
+
+            CurrentlyVisibleSemester =  DashboardViewModel.Semesters.Head;
+
+            if (CurrentlyVisibleSemester != null)
+            {
+                ViewBag["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data.EndDate.ToShortDateString()}";
+            }
+            else
+            {
+                ViewBag.SemesterDuration = " - ";
             }
         }
 
