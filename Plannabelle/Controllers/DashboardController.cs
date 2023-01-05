@@ -32,7 +32,7 @@ namespace Plannabelle.Controllers
         // GET: DashboardController
         public ActionResult Index()
         {
-            return View(DashboardViewModel.Semesters);
+            return View(DashboardViewModel);
         }
 
         // GET: DashboardController/Details/5
