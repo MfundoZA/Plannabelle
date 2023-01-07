@@ -16,6 +16,7 @@ namespace PlannabelleClassLibrary.Data
         public DbSet<Semester> Semesters { get; set; } = null!;
         public DbSet<Student> Students { get; set; } = null!;
         public DbSet<Enrollment> Enrollments { get; set; } = null!;
+        public DbSet<StudentSemester> StudentSemesters { get; set; } = null!;
 
         public PlannabelleDbContext()
         {
