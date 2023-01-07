@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlannabelleClassLibrary.Data;
+using PlannabelleClassLibrary.Models;
 using PlannabelleClassLibrary.ViewModels;
 
 namespace Plannabelle.Controllers
@@ -8,10 +9,12 @@ namespace Plannabelle.Controllers
     public class SemesterController : Controller
     {
         public SemesterViewModel SemesterViewModel { get; set; } = new SemesterViewModel();
+        public IHttpContextAccessor? HttpContextAccessor { get; set; }
         public PlannabelleDbContext DbContext { get; set; }
 
-        public SemesterController(PlannabelleDbContext dbContext)
+        public SemesterController(IHttpContextAccessor httpContextAccessor, PlannabelleDbContext dbContext)
         {
+            HttpContextAccessor = httpContextAccessor;
             DbContext = dbContext;
         }
 
@@ -40,7 +43,18 @@ namespace Plannabelle.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var newSemester = new Semester();
+                newSemester.StartDate = DateTime.Parse(collection["StartDate"].ToString());
+                newSemester.EndDate = DateTime.Parse(collection["EndDate"].ToString());
+
+                var newStudentSemester = new StudentSemester();
+                newStudentSemester.Student = (Student) DbContext.Students.Where(x => x.Id == HttpContextAccessor.HttpContext.Session.GetInt32("studentId"));
+                newStudentSemester.Semester = newSemester;
+
+                DbContext.Add(newStudentSemester);
+                DbContext.SaveChanges();
+
+                return RedirectToAction("Index", "Dashboard");
             }
             catch
             {
