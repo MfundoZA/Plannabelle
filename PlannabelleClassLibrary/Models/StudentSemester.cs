@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlannabelleClassLibrary.Models
 {
-    public class UserSemester
+    public class StudentSemester
     {
         public int UserId { get; set; }
         public Student Student { get; set; } = null!;
