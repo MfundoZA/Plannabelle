@@ -8,6 +8,8 @@ namespace PlannabelleClassLibrary.Models
 {
     public class StudentSemester
     {
+        public int Id { get; set; }
+
         public int UserId { get; set; }
         public Student Student { get; set; } = null!;
 
