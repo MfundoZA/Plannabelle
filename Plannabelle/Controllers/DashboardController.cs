@@ -20,9 +20,9 @@ namespace Plannabelle.Controllers
 
             int userId = (int) (HttpContextAccessor.HttpContext?.Session.GetInt32("userId"));
 
-            var semesters = (from enrollment in DbContext.Enrollments
-                             where enrollment.StudentId == userId
-                             select enrollment.Semester);
+            var semesters = (from studentSemester in DbContext.StudentSemesters
+                             where studentSemester.Student.Id == userId
+                             select studentSemester.Semester);
 
             foreach (var semester in semesters)
             {
