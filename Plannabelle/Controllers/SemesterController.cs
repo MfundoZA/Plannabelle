@@ -48,7 +48,7 @@ namespace Plannabelle.Controllers
                 newSemester.EndDate = DateTime.Parse(collection["EndDate"].ToString());
 
                 var newStudentSemester = new StudentSemester();
-                newStudentSemester.Student = (Student) DbContext.Students.Where(x => x.Id == HttpContextAccessor.HttpContext.Session.GetInt32("studentId"));
+                newStudentSemester.Student = DbContext.Students.Where(x => x.Id == HttpContextAccessor.HttpContext.Session.GetInt32("studentId")).First();
                 newStudentSemester.Semester = newSemester;
 
                 DbContext.Add(newStudentSemester);
