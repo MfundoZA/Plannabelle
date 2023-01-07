@@ -30,20 +30,20 @@ namespace Plannabelle.Controllers
             }
 
             CurrentlyVisibleSemester =  DashboardViewModel.Semesters?.Head;
-
-            if (CurrentlyVisibleSemester != null)
-            {
-                ViewBag["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
-            }
-            else
-            {
-                ViewBag.SemesterDuration = " - ";
-            }
         }
 
         // GET: DashboardController
         public ActionResult Index()
         {
+            if (CurrentlyVisibleSemester != null)
+            {
+                ViewData["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
+            }
+            else
+            {
+                ViewData["SemesterDuration"] = " - ";
+            }
+
             return View(DashboardViewModel);
         }
 

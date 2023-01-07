@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <div class="row">
         <button class="col" asp-action="NavigateToPreviousSemester"><</button>
-        <p class="col-10 text-center">@ViewBag.SemesterDuration</p>
+        <h5 class="col-10 text-center">@ViewData["SemesterDuration"]</h5>
         <button class="col" asp-action="NavigateToPreviousSemester">></button>
     </div>
 </div>
