@@ -18,7 +18,7 @@ namespace Plannabelle.Controllers
             DbContext = dbContext;
             HttpContextAccessor = httpContextAccessor;
 
-            int userId = (int) (HttpContextAccessor.HttpContext?.Session.GetInt32("userId"));
+            int userId = (int) (HttpContextAccessor.HttpContext?.Session.GetInt32("studentId"));
 
             var semesters = (from studentSemester in DbContext.StudentSemesters
                              where studentSemester.Student.Id == userId

@@ -78,7 +78,7 @@ namespace Plannabelle.Controllers
                 {
                     var student = DbContext.Students.Where<Student>(x => String.Equals(x.Email, email) && String.Equals(x.Password, password)).First();
 
-                    HttpContextAccessor.HttpContext?.Session.SetInt32("userId", student.Id);
+                    HttpContextAccessor.HttpContext?.Session.SetInt32("studentId", student.Id);
                     HttpContextAccessor.HttpContext?.Session.SetString("email", student.Email);
                 }
                 else
