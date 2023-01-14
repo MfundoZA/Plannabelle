@@ -18,9 +18,5 @@ namespace PlannabelleClassLibrary.Models
 
         public int ModuleId { get; set; }
         public Module Module { get; set; } = null!;
-
-        public double SelfStudyHoursPerWeek { get; set; }
-        public double SelfStudyHoursRemaining { get; set; }
-
     }
 }
