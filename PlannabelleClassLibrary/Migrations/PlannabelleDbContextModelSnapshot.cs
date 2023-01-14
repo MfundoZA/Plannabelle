@@ -33,12 +33,6 @@ namespace PlannabelleClassLibrary.Migrations
                     b.Property<int>("ModuleId")
                         .HasColumnType("int");
 
-                    b.Property<double>("SelfStudyHoursPerWeek")
-                        .HasColumnType("float");
-
-                    b.Property<double>("SelfStudyHoursRemaining")
-                        .HasColumnType("float");
-
                     b.Property<int>("SemesterId")
                         .HasColumnType("int");
 
@@ -138,9 +132,6 @@ namespace PlannabelleClassLibrary.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
