@@ -13,10 +13,10 @@ namespace PlannabelleClassLibrary.Models
         public int StudentId { get; set; }
         public Student Student { get; set; } = null!;
 
-        public int SemesterId { get; set; }
-        public Semester Semester { get; set; } = null!;
+        public int StudentSemesterId { get; set; }
+        public StudentSemester StudentSemester { get; set; } = null!;
 
-        public int ModuleId { get; set; }
-        public Module Module { get; set; } = null!;
+        public int StudentModuleId { get; set; }
+        public StudentModule StudentModule { get; set; } = null!;
     }
 }
