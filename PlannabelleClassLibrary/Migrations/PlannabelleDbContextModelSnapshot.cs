@@ -30,22 +30,22 @@ namespace PlannabelleClassLibrary.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ModuleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SemesterId")
-                        .HasColumnType("int");
-
                     b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentModuleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentSemesterId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ModuleId");
-
-                    b.HasIndex("SemesterId");
-
                     b.HasIndex("StudentId");
+
+                    b.HasIndex("StudentModuleId");
+
+                    b.HasIndex("StudentSemesterId");
 
                     b.ToTable("Enrollments");
                 });
@@ -58,8 +58,8 @@ namespace PlannabelleClassLibrary.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ClassHoursPerWeek")
-                        .HasColumnType("int");
+                    b.Property<double>("ClassHoursPerWeek")
+                        .HasColumnType("float");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -120,6 +120,35 @@ namespace PlannabelleClassLibrary.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("PlannabelleClassLibrary.Models.StudentModule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ModuleId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("SelfStudyHoursPerWeek")
+                        .HasColumnType("float");
+
+                    b.Property<double>("SelfStudyHoursRemaining")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModuleId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentModule");
+                });
+
             modelBuilder.Entity("PlannabelleClassLibrary.Models.StudentSemester", b =>
                 {
                     b.Property<int>("Id")
@@ -145,15 +174,36 @@ namespace PlannabelleClassLibrary.Migrations
 
             modelBuilder.Entity("PlannabelleClassLibrary.Models.Enrollment", b =>
                 {
-                    b.HasOne("PlannabelleClassLibrary.Models.Module", "Module")
+                    b.HasOne("PlannabelleClassLibrary.Models.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("ModuleId")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PlannabelleClassLibrary.Models.Semester", "Semester")
+                    b.HasOne("PlannabelleClassLibrary.Models.StudentModule", "StudentModule")
                         .WithMany()
-                        .HasForeignKey("SemesterId")
+                        .HasForeignKey("StudentModuleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PlannabelleClassLibrary.Models.StudentSemester", "StudentSemester")
+                        .WithMany()
+                        .HasForeignKey("StudentSemesterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("StudentModule");
+
+                    b.Navigation("StudentSemester");
+                });
+
+            modelBuilder.Entity("PlannabelleClassLibrary.Models.StudentModule", b =>
+                {
+                    b.HasOne("PlannabelleClassLibrary.Models.Module", "Module")
+                        .WithMany()
+                        .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -164,8 +214,6 @@ namespace PlannabelleClassLibrary.Migrations
                         .IsRequired();
 
                     b.Navigation("Module");
-
-                    b.Navigation("Semester");
 
                     b.Navigation("Student");
                 });
