@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlannabelleClassLibrary.Data;
+using PlannabelleClassLibrary.Models;
 using PlannabelleClassLibrary.ViewModels;
 
 namespace Plannabelle.Controllers
@@ -41,7 +42,27 @@ namespace Plannabelle.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var newModule = new Module();
+                newModule.Code = collection["Code"].ToString();
+                newModule.Name = collection["Name"].ToString();
+                newModule.Credits = Int32.Parse(collection["Credits"].ToString());
+                newModule.ClassHoursPerWeek = Int32.Parse(collection["ClassHoursPerWeek"].ToString());
+
+                var newStudentModule = new StudentModule();
+                newStudentModule.Student = DbContext.Students.Where(x => x.Id == HttpContextAccessor.HttpContext.Session.GetInt32("studentId")).First();
+                newStudentModule.Module = newModule;
+                newStudentModule.SelfStudyHoursPerWeek = Double.Parse(collection["SelfStudyHoursPerWeek"].ToString());
+                newStudentModule.SelfStudyHoursRemaining = Double.Parse(collection["SelfStudyHoursRemaining"].ToString());
+
+                var newEnrollment = new Enrollment();
+                newEnrollment.Student = newStudentModule.Student;
+                newEnrollment.StudentSemester = DbContext.StudentSemesters.Where(x => x.Id == Int32.Parse(collection["Semester"].ToString())).First();
+                newEnrollment.StudentModule = newStudentModule;
+
+                DbContext.Add(newEnrollment);
+                DbContext.SaveChanges();
+
+                return RedirectToAction("Index", "Dashboard");
             }
             catch
             {
