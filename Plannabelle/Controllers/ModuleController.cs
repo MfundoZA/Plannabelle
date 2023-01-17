@@ -14,6 +14,7 @@ namespace Plannabelle.Controllers
 
         public ModuleController(IHttpContextAccessor httpContextAccessor, PlannabelleDbContext dbContext)
         {
+            HttpContextAccessor = httpContextAccessor;
             DbContext = dbContext;
         }
 
