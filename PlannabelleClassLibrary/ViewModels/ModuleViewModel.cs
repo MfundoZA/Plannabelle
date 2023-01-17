@@ -12,6 +12,9 @@ namespace PlannabelleClassLibrary.ViewModels
         public string Name { get; set; } = null!;
         public int Credits { get; set; }
         public double ClassHoursPerWeek  { get; set; }
+
+        public int SemesterId { get; set; }
+
         public double SelfStudyHoursPerWeek { get; set; }
         public double SelfStudyHoursRemaining { get; set; }
     }
