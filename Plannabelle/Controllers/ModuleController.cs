@@ -33,6 +33,13 @@ namespace Plannabelle.Controllers
         // GET: ModuleController/Create
         public ActionResult Create()
         {
+            var semesters = (from studentSemester in DbContext.StudentSemesters
+                             join semester in DbContext.Semesters
+                             on studentSemester.StudentId equals HttpContextAccessor.HttpContext.Session.GetInt32("studentId")
+                             select studentSemester.Semester).ToList();
+
+            ViewData["Semesters"] = semesters;
+
             return View();
         }
 
