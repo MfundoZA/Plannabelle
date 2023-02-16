@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PlannabelleClassLibrary.Migrations
 {
-    /// <inheritdoc />
     public partial class InitialSchema : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -19,7 +17,8 @@ namespace PlannabelleClassLibrary.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Credits = table.Column<int>(type: "int", nullable: false)
+                    Credits = table.Column<int>(type: "int", nullable: false),
+                    ClassHoursPerWeek = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,6 +45,7 @@ namespace PlannabelleClassLibrary.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -55,25 +55,34 @@ namespace PlannabelleClassLibrary.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentModules",
+                name: "Enrollments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    ModuleId = table.Column<int>(type: "int", nullable: false)
+                    SemesterId = table.Column<int>(type: "int", nullable: false),
+                    ModuleId = table.Column<int>(type: "int", nullable: false),
+                    SelfStudyHoursPerWeek = table.Column<double>(type: "float", nullable: false),
+                    SelfStudyHoursRemaining = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentModules", x => x.Id);
+                    table.PrimaryKey("PK_Enrollments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentModules_Modules_ModuleId",
+                        name: "FK_Enrollments_Modules_ModuleId",
                         column: x => x.ModuleId,
                         principalTable: "Modules",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentModules_Students_StudentId",
+                        name: "FK_Enrollments_Semesters_SemesterId",
+                        column: x => x.SemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Enrollments_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id",
@@ -81,7 +90,7 @@ namespace PlannabelleClassLibrary.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentSemesters",
+                name: "UserSemesters",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -91,15 +100,15 @@ namespace PlannabelleClassLibrary.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentSemesters", x => x.Id);
+                    table.PrimaryKey("PK_UserSemesters", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentSemesters_Semesters_SemesterId",
+                        name: "FK_UserSemesters_Semesters_SemesterId",
                         column: x => x.SemesterId,
                         principalTable: "Semesters",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentSemesters_Students_StudentId",
+                        name: "FK_UserSemesters_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id",
@@ -107,34 +116,38 @@ namespace PlannabelleClassLibrary.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentModules_ModuleId",
-                table: "StudentModules",
+                name: "IX_Enrollments_ModuleId",
+                table: "Enrollments",
                 column: "ModuleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentModules_StudentId",
-                table: "StudentModules",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StudentSemesters_SemesterId",
-                table: "StudentSemesters",
+                name: "IX_Enrollments_SemesterId",
+                table: "Enrollments",
                 column: "SemesterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentSemesters_StudentId",
-                table: "StudentSemesters",
+                name: "IX_Enrollments_StudentId",
+                table: "Enrollments",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserSemesters_SemesterId",
+                table: "UserSemesters",
+                column: "SemesterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserSemesters_StudentId",
+                table: "UserSemesters",
                 column: "StudentId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "StudentModules");
+                name: "Enrollments");
 
             migrationBuilder.DropTable(
-                name: "StudentSemesters");
+                name: "UserSemesters");
 
             migrationBuilder.DropTable(
                 name: "Modules");

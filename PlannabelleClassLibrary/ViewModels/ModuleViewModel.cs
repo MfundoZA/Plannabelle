@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PlannabelleClassLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace PlannabelleClassLibrary.ViewModels
 {
@@ -16,6 +18,8 @@ namespace PlannabelleClassLibrary.ViewModels
 
         [DisplayName("Semester")]
         public int SemesterId { get; set; }
+
+        public List<Semester> Semesters { get; set; } = null!;
 
         public double SelfStudyHoursPerWeek { get; set; }
         public double SelfStudyHoursRemaining { get; set; }

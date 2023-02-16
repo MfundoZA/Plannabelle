@@ -1,4 +1,5 @@
 ﻿@using PlannabelleClassLibrary.Models
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @model PlannabelleClassLibrary.ViewModels.ModuleViewModel
 
 @{
@@ -35,18 +36,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="SemesterId" class="control-label"></label>
-                <fieldset>
-                    <select id="SemesterId" name="SemesterId">
+                <select class="form-control" asp-for="SemesterId">
 
-                        <option value=""></option>
+                        <option value="">- Select -</option>
 
-                        @foreach (Semester semester in ViewData["Semesters"] as IEnumerable<Semester>)
+                        @foreach (Semester semester in Model.Semesters)
                         {
-                            <option value=@semester.Id>@semester.StartDate - @semester.EndDate</option>
+                            <option value=@semester.Id>@semester.StartDate.ToShortDateString() - @semester.EndDate.ToShortDateString()</option>
+
                         }
 
-                    </select>
-                </fieldset>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="SelfStudyHoursPerWeek" class="control-label"></label>

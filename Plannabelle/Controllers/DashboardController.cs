@@ -8,7 +8,7 @@ namespace Plannabelle.Controllers
 {
     public class DashboardController : Controller
     {
-        public DashboardViewModel DashboardViewModel { get; set; } = new DashboardViewModel();
+        public DashboardViewModel DashboardViewModel { get; set; } = (DashboardViewModel) ViewModel.GetSingletonInstance();
         public PlannabelleDbContext DbContext { get; set; }
         public IHttpContextAccessor? HttpContextAccessor { get; set; }
         public Node<Semester>? CurrentlyVisibleSemester { get; set; }
@@ -20,31 +20,49 @@ namespace Plannabelle.Controllers
 
             int userId = (int) (HttpContextAccessor.HttpContext?.Session.GetInt32("studentId"));
 
-            var semesters = (from studentSemester in DbContext.StudentSemesters
-                             where studentSemester.Student.Id == userId
-                             select studentSemester.Semester);
+            var semesters = (from userSemester in DbContext.UserSemesters
+                             where userSemester.StudentId == userId
+                             select userSemester.Semester);
 
             foreach (var semester in semesters)
             {
                 DashboardViewModel.Semesters?.addNode(semester);
             }
 
-            CurrentlyVisibleSemester =  DashboardViewModel.Semesters?.Head;
+            // Ensures the default semester value does not overwrite
+            // selection of other semesters
+            if (CurrentlyVisibleSemester == null)
+            {
+                CurrentlyVisibleSemester = DashboardViewModel.Semesters?.Head;
+            }
         }
 
         // GET: DashboardController
-        public ActionResult Index()
-        {
-            if (CurrentlyVisibleSemester != null)
-            {
-                ViewData["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
-            }
-            else
-            {
-                ViewData["SemesterDuration"] = " - ";
-            }
+        ////public ActionResult Index()
+        ////{
+        ////    if (CurrentlyVisibleSemester != null)
+        ////    {
+        ////        ViewData["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
+        ////    }
+        ////    else
+        ////    {
+        ////        ViewData["SemesterDuration"] = " - ";
+        ////    }
 
-            return View(DashboardViewModel);
+        ////    return View(DashboardViewModel);
+        ////}
+
+        public ActionResult Index(int id)
+        {
+            var semesters = (from userSemester in DbContext.UserSemesters
+                             where userSemester.StudentId == HttpContextAccessor.HttpContext.Session.GetInt32("studentId")
+                             select userSemester.Semester).ToArray();
+
+            CurrentlyVisibleSemester = new Node<Semester>(semesters.Where(x => x.Id == id).FirstOrDefault());
+
+            ViewData["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
+
+            return View();
         }
 
         // GET: DashboardController/Details/5
@@ -114,6 +132,28 @@ namespace Plannabelle.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult NavigateToNextSemester()
+        {
+            if (CurrentlyVisibleSemester.Next != null)
+            {
+                CurrentlyVisibleSemester = CurrentlyVisibleSemester.Next;
+                ViewData["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult NavigateToPreviousSemester()
+        {
+            if (CurrentlyVisibleSemester.Previous != null)
+            {
+                CurrentlyVisibleSemester = CurrentlyVisibleSemester.Previous;
+                ViewData["SemesterDuration"] = $"{CurrentlyVisibleSemester.Data?.StartDate.ToShortDateString()} - {CurrentlyVisibleSemester.Data?.EndDate.ToShortDateString()}";
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -3,6 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using PlannabelleClassLibrary.Data;
 using PlannabelleClassLibrary.Models;
 using PlannabelleClassLibrary.ViewModels;
+using System.Web.Mvc;
+using ActionResult = Microsoft.AspNetCore.Mvc.ActionResult;
+using Controller = Microsoft.AspNetCore.Mvc.Controller;
+using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
+using ValidateAntiForgeryTokenAttribute = Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute;
 
 namespace Plannabelle.Controllers
 {
@@ -33,14 +38,13 @@ namespace Plannabelle.Controllers
         // GET: ModuleController/Create
         public ActionResult Create()
         {
-            var semesters = (from studentSemester in DbContext.StudentSemesters
-                             join semester in DbContext.Semesters
-                             on studentSemester.StudentId equals HttpContextAccessor.HttpContext.Session.GetInt32("studentId")
-                             select studentSemester.Semester).ToList();
+            var semesters = (from userSemesters in DbContext.UserSemesters
+                             where userSemesters.StudentId == HttpContextAccessor.HttpContext.Session.GetInt32("studentId")
+                             select userSemesters.Semester).ToList();
 
-            ViewData["Semesters"] = semesters;
+            ModuleViewModel.Semesters = semesters;
 
-            return View();
+            return View(ModuleViewModel);
         }
 
         // POST: ModuleController/Create
@@ -55,17 +59,13 @@ namespace Plannabelle.Controllers
                 newModule.Name = collection["Name"].ToString();
                 newModule.Credits = Int32.Parse(collection["Credits"].ToString());
                 newModule.ClassHoursPerWeek = Int32.Parse(collection["ClassHoursPerWeek"].ToString());
-
-                var newStudentModule = new StudentModule();
-                newStudentModule.Student = DbContext.Students.Where(x => x.Id == HttpContextAccessor.HttpContext.Session.GetInt32("studentId")).First();
-                newStudentModule.Module = newModule;
-                newStudentModule.SelfStudyHoursPerWeek = Double.Parse(collection["SelfStudyHoursPerWeek"].ToString());
-                newStudentModule.SelfStudyHoursRemaining = Double.Parse(collection["SelfStudyHoursRemaining"].ToString());
-
+                
                 var newEnrollment = new Enrollment();
-                newEnrollment.Student = newStudentModule.Student;
-                newEnrollment.StudentSemester = DbContext.StudentSemesters.Where(x => x.Id == Int32.Parse(collection["Semester"].ToString())).First();
-                newEnrollment.StudentModule = newStudentModule;
+                newEnrollment.Student = DbContext.Students.Where(x => x.Id == HttpContextAccessor.HttpContext.Session.GetInt32("studentId")).First();
+                newEnrollment.Semester = DbContext.UserSemesters.Where(x => x.Semester.Id == Int32.Parse(collection["SemesterId"].ToString())).Select(x => x.Semester).First();
+                newEnrollment.Module = newModule;
+                newEnrollment.SelfStudyHoursPerWeek = Double.Parse(collection["SelfStudyHoursPerWeek"].ToString());
+                newEnrollment.SelfStudyHoursRemaining = Double.Parse(collection["SelfStudyHoursRemaining"].ToString());
 
                 DbContext.Add(newEnrollment);
                 DbContext.SaveChanges();
