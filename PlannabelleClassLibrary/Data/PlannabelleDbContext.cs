@@ -31,7 +31,7 @@ namespace PlannabelleClassLibrary.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=ML-RefVm-631348\\SQLEXPRESS;Initial Catalog=Plannabelle;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                optionsBuilder.UseSqlServer("Data Source=Jordan\\SQLEXPRESS;Initial Catalog=Plannabelle;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
     }
