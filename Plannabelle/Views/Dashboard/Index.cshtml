@@ -13,9 +13,13 @@
 <!-- Semester Navigation-->
 <div class="container-fluid">
     <div class="row">
-        <button class="col" asp-action="NavigateToPreviousSemester"><</button>
+        <form class="col" asp-action="NavigateToPreviousSemester">
+            <button class="col" type="submit">&lt;</button>
+        </form>
         <h5 class="col-10 text-center">@ViewData["SemesterDuration"]</h5>
-        <button class="col" asp-action="NavigateToPreviousSemester">></button>
+        <form class="col" asp-action="NavigateToNextSemester">
+            <button type="submit">&gt;</button>
+        </form>
     </div>
 </div>
 
